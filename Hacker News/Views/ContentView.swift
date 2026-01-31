@@ -17,11 +17,15 @@ struct ContentView: View {
             
             List(networkManager.posts) { post in
                 
-                HStack {
+                NavigationLink(destination: DetailView(url: post.url)) {
                     
-                    Text(String(post.points))
-                    Text(post.title)
-
+                    HStack {
+                        
+                        Text(String(post.points))
+                        Text(post.title)
+                        
+                    }
+                    
                 }
                 
             }
@@ -29,7 +33,7 @@ struct ContentView: View {
             
         }
         .onAppear {
-
+            
             self.networkManager.fetchData()
             
         }
